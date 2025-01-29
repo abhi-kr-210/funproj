@@ -1,6 +1,7 @@
 import express from "express";
 import "dotenv/config";
-import jokes from "./data.json" assert { type: "json" };
+import { readFile } from 'fs/promises';
+const jokes = JSON.parse(await readFile(new URL('./data.json', import.meta.url)));
 const app=express();
 const port=process.env.PORT || 3000;
 app.get('/',(req,res)=>{
