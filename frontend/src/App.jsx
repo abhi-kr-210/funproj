@@ -3,10 +3,11 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import axios from "axios"
+
 function App() {
   const [jokes, setjokes] = useState([])
    useEffect(()=>{
-       axios.get("/api/jokes")
+       axios.get(`${import.meta.env.VITE_BACKENDURL}/api/jokes`) // Use environment variable
        .then((res)=>{
            setjokes(res.data);
        })
